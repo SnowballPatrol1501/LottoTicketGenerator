@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h3 class="pull-left">Tickets</h3>
+        <button type="button" class="btn btn-success pull-right" (click)="createTicketModal()">
+            Add Ticket
+        </button>
+    </div>
+</div>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Id</th>
+            <th scope="col">Superzahl</th>
+            <th scope="col">Boxen</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let model of models; index as index" (click)="selectModel(model)">
+            <th scope="row">{{index}}</th>
+            <td>{{model.id}}</td>
+            <td>{{ model.hasSuperNumber ? 'Ja' : 'Nein' }}</td>
+            <td>{{ model.countOfBoxes }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<lotto-ticket-insert-dialog #insertDialog ></lotto-ticket-insert-dialog>

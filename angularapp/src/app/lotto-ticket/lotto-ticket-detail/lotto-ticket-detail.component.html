@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h3>Ticket {{ model?.id }}</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <span *ngIf="model?.showSuperNumber">Superzahl {{ model?.superNumber }} </span>
+    </div>
+</div>
+<div *ngIf="model?.ticketBoxeModels" class="row">
+    <div *ngFor="let box of model!.ticketBoxeModels; index as boxIndex" class="col-12 col-sm-4 col-md-3 col-lg-2 mb-3">
+        <div>
+            <h6>Box {{ boxIndex + 1 }}</h6>
+            <span class="boxnumber" *ngFor="let number of numberPerBox; index as colIndex">
+                <span *ngIf="checkMarked(box, number)" class="boxicon"><strong>X</strong></span>
+                {{number}}
+            </span>
+            <div class="boxfooter">
+                {{ box.numbersAsStringCommaList }}
+            </div>
+        </div>
+    </div>
+</div>
